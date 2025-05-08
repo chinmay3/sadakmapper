@@ -7,6 +7,7 @@ import matplotlib.pyplot as plt
 # Load the best model saved during training
 model = load_model('save_best.keras', custom_objects={'soft_dice_loss': soft_dice_loss, 'iou_coef': iou_coef})
 
+
 # Streamlit app UI
 st.title("Satellite Image Segmentation Model")
 
