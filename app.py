@@ -11,13 +11,16 @@ model = tf.keras.models.load_model("road_mapper.h5", compile=False)
 uploaded_file = st.file_uploader("Upload a road image", type=["jpg", "jpeg", "png"])
 
 if uploaded_file is not None:
-    image = Image.open(uploaded_file).convert("RGB")
-    st.image(image, caption="Original Image", use_column_width=True)
+    image = Image.open(uploaded_file)
+    st.image(image, caption="Uploaded Image", use_column_width=True)
 
-    if st.button("Segment Road"):
-        with st.spinner("Segmenting..."):
-            preprocessed = preprocess_image(image)
-            prediction = model.predict(preprocessed)
-            mask_image = postprocess_mask(prediction)
-        
-        st.image(mask_image, caption="Predicted Road Mask", use_column_width=True)
+    preprocessed_image = preprocess_image(image)
+    
+    # 🔍 Add this block for debugging
+    prediction = model.predict(preprocessed_image)
+    st.write("Prediction shape:", prediction.shape)
+    st.write("Prediction max/min:", prediction.max(), prediction.min())
+    
+    # Continue with post-processing and displaying the output
+    mask = postprocess_mask(prediction)
+    st.image(mask, caption="Predicted Mask", use_column_width=True)
