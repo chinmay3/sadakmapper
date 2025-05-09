@@ -4,4 +4,4 @@ tf-keras==2.16.0   # This is the Keras 2 package maintained by TensorFlow for TF
 numpy==1.26.4      # Your specified version, compatible with Python 3.12
 matplotlib==3.8.4  # Updated for robust Python 3.12 support (3.8+ officially supports 3.12)
 Pillow==10.3.0     # Updated for robust Python 3.12 support (10.0+ officially supports 3.12)
-# setuptools==68.2.2 # Generally not needed to pin setuptools in requirements.txt unless for specific build reasons. pip handles it.
+setuptools==68.2.2 # Generally not needed to pin setuptools in requirements.txt unless for specific build reasons. pip handles it.
